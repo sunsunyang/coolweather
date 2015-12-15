@@ -114,7 +114,7 @@ public class CoolWeatherDB {
 	{
 		List<City> list=new ArrayList<City>();
 		//根据省的键值province_id来读取城市信息,执行查询语句后，如果有相关信息，会自动进入”cursor“的第一行
-		Cursor cursor=db.query("City", null, "province_id", new String[]{String.valueOf(provinceId)}, null, null, null);
+		Cursor cursor=db.query("City", null, "province_id=?", new String[]{String.valueOf(provinceId)}, null, null, null);
 
 		if(cursor.moveToFirst())
 		{
@@ -154,7 +154,7 @@ public class CoolWeatherDB {
 	{
 		List<County> list=new ArrayList<County>();
 		//查询表“county”,获取游标cursor
-		Cursor cursor=db.query("County", null, "city_Id", new String[]{String.valueOf(cityId)}, null, null, null);
+		Cursor cursor=db.query("County", null, "city_Id=?", new String[]{String.valueOf(cityId)}, null, null, null);
 		//逐行读取对应“cityId”的县城
 		if(cursor.moveToFirst())
 		{
